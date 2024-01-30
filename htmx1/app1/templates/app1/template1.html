@@ -1,4 +1,15 @@
 {% extends 'base.html' %} {% block content %}
-<h2>Main Template</h2>
-<button hx-get="/test/" hx-trigger="click">Load Test Template</button>
+<div hx-target="this" hx-swap="outerHTML">
+  <h2>Main Template</h2>
+  <button hx-get="/test/">Load Test Template</button>
+</div>
+<section>
+  <div>
+    <form hx-post="/test_put/22/">
+      {% csrf_token %} Enter first name: <input name="first_name" type="text" />
+      <button>Register!</button>
+    </form>
+    Enter last name: <input name="last_name" type="text" />
+  </div>
+</section>
 {% endblock %}
