@@ -5,7 +5,7 @@
 </div>
 <section>
   <div>
-    <form hx-post="/test_put/22/">
+    <form hx-post="/test_put/22/" hx-include="[name='last_name']">
       {% csrf_token %} Enter first name: <input name="first_name" type="text" />
       <button>Register!</button>
     </form>
