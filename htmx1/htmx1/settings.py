@@ -55,7 +55,9 @@ ROOT_URLCONF = 'htmx1.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR / "htmx1" /"templates",
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
