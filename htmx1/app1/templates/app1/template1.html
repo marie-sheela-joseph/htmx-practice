@@ -1,1 +1,4 @@
-<button hx-get="/test">{{ test }}</button>
+{% extends 'base.html' %} {% block content %}
+<h2>Main Template</h2>
+<button hx-get="/test">Load Test Template</button>
+{% endblock %}

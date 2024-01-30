@@ -1,24 +1,19 @@
-<!-- base.html -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}My Django App{% endblock %}</title>
-    <!-- Include htmx.js from a CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/htmx.org@1.7.1/dist/htmx.js"></script>
-    <!-- Add your CSS styles or link to external stylesheets here -->
+    <title>{% block title %}Django + htmx App{% endblock %}</title>
+    <script
+      src="https://unpkg.com/htmx.org@1.9.10/dist/htmx.js"
+      integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <header>
-      <h1>{% block header %}My Django App{% endblock %}</h1>
-      <!-- Add navigation links or other header content here -->
+      <h1>{% block header %}Django + htmx App{% endblock %}</h1>
     </header>
-
     <main>{% block content %}{% endblock %}</main>
-
-    <footer>
-      <!-- Add footer content or links here -->
-    </footer>
   </body>
 </html>
