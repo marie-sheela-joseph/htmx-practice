@@ -1,24 +1,9 @@
-<input type="checkbox"
-       id="python"
-       name="lang"
-       value="python"
-       {% if 'python' in selected_languages %}checked{% endif %} />
-<label for="python"
-       class="{% if 'python' in selected_languages %}text-success{% endif %}">Python</label>
-<br />
-<input type="checkbox"
-       id="javascript"
-       name="lang"
-       value="javascript"
-       {% if 'javascript' in selected_languages %}checked{% endif %} />
-<label for="javascript"
-       class="{% if 'javascript' in selected_languages %}text-success{% endif %}">Javascript</label>
-<br />
-<input type="checkbox"
-       id="c"
-       name="lang"
-       value="c"
-       {% if 'c' in selected_languages %}checked{% endif %} />
-<label for="c"
-       class="{% if 'c' in selected_languages %}text-success{% endif %}">C</label>
-<br />
+{% for key,value in languages.items %}
+  <input type="checkbox"
+         id="{{ key }}"
+         name="lang"
+         value="{{ key }}"
+         {% if value %}checked{% endif %} />
+  <label for="{{ key }}" class="{% if value %}text-success{% endif %}">{{ key }}</label>
+  <br />
+{% endfor %}

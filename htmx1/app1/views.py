@@ -29,12 +29,25 @@ def test_post(request, *args,**kwargs):
     print("request",request,"\n args",args,"\n kwargs",kwargs, "\n kwargs.get('a')",kwargs.get("a"),"\n first_name", request.POST.get("first_name"),"\n last_name", request.POST.get("last_name"))
     return HttpResponse(f'Hello {request.POST.get("first_name")} {request.POST.get("last_name")}')
 
-# bulk update
+# wip
+LANGUAGES={"python":True,"javascript":True,"c":False}
 def bulk_update(request):    
-    selected_languages=request.POST.getlist('lang')
-    print(request.POST,request.POST.getlist('lang'),selected_languages)
-    return render(request, "app1/bulk_update.html",{'selected_languages':selected_languages})
+    return render(request, "app1/bulk_update.html",{'languages':LANGUAGES})
 
 def languages(request):
     selected_languages=request.POST.getlist("lang")
-    return render(request, "app1/partials/languages.html",{"selected_languages":selected_languages})
+    for key,value in LANGUAGES.items():
+        if key in selected_languages:
+            LANGUAGES[key]=True
+        else:
+            LANGUAGES[key]=False
+    print(LANGUAGES)
+    return render(request, "app1/partials/languages.html",{"languages":LANGUAGES})
+
+# bulk update
+# def bulk_update(request):    
+#     return render(request, "app1/bulk_update.html",{'selected_languages':selected_languages})
+
+# def languages(request):
+#     selected_languages=request.POST.getlist("lang")
+#     return render(request, "app1/partials/languages.html",{"selected_languages":selected_languages})
