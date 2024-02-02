@@ -34,3 +34,7 @@ def bulk_update(request):
     selected_languages=request.POST.getlist('lang')
     print(request.POST,request.POST.getlist('lang'),selected_languages)
     return render(request, "app1/bulk_update.html",{'selected_languages':selected_languages})
+
+def languages(request):
+    selected_languages=request.POST.getlist("lang")
+    return render(request, "app1/partials/languages.html",{"selected_languages":selected_languages})

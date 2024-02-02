@@ -1,0 +1,24 @@
+<input type="checkbox"
+       id="python"
+       name="lang"
+       value="python"
+       {% if 'python' in selected_languages %}checked{% endif %} />
+<label for="python"
+       class="{% if 'python' in selected_languages %}text-success{% endif %}">Python</label>
+<br />
+<input type="checkbox"
+       id="javascript"
+       name="lang"
+       value="javascript"
+       {% if 'javascript' in selected_languages %}checked{% endif %} />
+<label for="javascript"
+       class="{% if 'javascript' in selected_languages %}text-success{% endif %}">Javascript</label>
+<br />
+<input type="checkbox"
+       id="c"
+       name="lang"
+       value="c"
+       {% if 'c' in selected_languages %}checked{% endif %} />
+<label for="c"
+       class="{% if 'c' in selected_languages %}text-success{% endif %}">C</label>
+<br />

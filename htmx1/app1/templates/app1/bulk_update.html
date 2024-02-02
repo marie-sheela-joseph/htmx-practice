@@ -1,42 +1,8 @@
-{% extends 'base.html' %} {% block content %}
-<form
-  hx-post="/bulk_update/"
-  hx-confirm="confirm?"
-  hx-load="loadFunction()"
-  hx-loadstart="loadStartFunction()"
->
-  {% csrf_token %} <input type="checkbox" id="python" name="lang" value="python"
-  {% if 'python' in selected_languages %}checked{% endif %} />
-  <label
-    for="python"
-    class="{% if 'python' in selected_languages %}text-success{% endif %}"
-  >
-    Python </label
-  ><br />
-  <input type="checkbox" id="javascript" name="lang" value="javascript" />
-  <label
-    for="javascript"
-    class="{% if 'javascript' in selected_languages %}text-success{% endif %}"
-  >
-    Javascript </label
-  ><br />
-  <input type="checkbox" id="c" name="lang" value="c" />
-  <label
-    for="c"
-    class="{% if 'c' in selected_languages %}text-success{% endif %}"
-  >
-    C </label
-  ><br />
-  <button>activate</button>
-</form>
-
-<script>
-  function loadFunction() {
-    alert('Content loaded successfully!');
-  }
-  function loadStartFunction() {
-    print('load start');
-    alert('load start successfully!');
-  }
-</script>
+{% extends 'base.html' %}
+{% block content %}
+  <form hx-post="/app1/partials/languages/" hx-target="#languages_options">
+    {% csrf_token %}
+    <div id="languages_options">{% include 'app1/partials/languages.html' %}</div>
+    <button>activate</button>
+  </form>
 {% endblock %}
