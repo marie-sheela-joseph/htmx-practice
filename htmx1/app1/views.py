@@ -29,12 +29,12 @@ def test_post(request, *args,**kwargs):
     print("request",request,"\n args",args,"\n kwargs",kwargs, "\n kwargs.get('a')",kwargs.get("a"),"\n first_name", request.POST.get("first_name"),"\n last_name", request.POST.get("last_name"))
     return HttpResponse(f'Hello {request.POST.get("first_name")} {request.POST.get("last_name")}')
 
-# wip
+# languages() version 3 - split languages into 2 end points activate, disactivate 
 LANGUAGES={"python":True,"javascript":True,"c":False}
 def bulk_update(request):    
     return render(request, "app1/bulk_update.html",{'languages':LANGUAGES})
 
-def languages(request):
+def activate(request):
     selected_languages=request.POST.getlist("lang")
     for key,value in LANGUAGES.items():
         if key in selected_languages:
@@ -44,10 +44,31 @@ def languages(request):
     print(LANGUAGES)
     return render(request, "app1/partials/languages.html",{"languages":LANGUAGES})
 
-# bulk update
-# def bulk_update(request):    
-#     return render(request, "app1/bulk_update.html",{'selected_languages':selected_languages})
+def disactivate(request):
+    selected_languages=request.POST.getlist("lang")
+    for key,value in LANGUAGES.items():
+        if key in selected_languages:
+            LANGUAGES[key]=False        
+    print(LANGUAGES)
+    return render(request, "app1/partials/languages.html",{"languages":LANGUAGES})
 
+# languages() version 2 with dictionary
+# LANGUAGES={"python":True,"javascript":True,"c":False}
+# def languages(request):
+#     selected_languages=request.POST.getlist("lang")
+#     for key,value in LANGUAGES.items():
+#         if key in selected_languages:
+#             LANGUAGES[key]=True
+#         else:
+#             LANGUAGES[key]=False
+#     print(LANGUAGES)
+#     return render(request, "app1/partials/languages.html",{"languages":LANGUAGES})
+
+# languages() version 1
 # def languages(request):
 #     selected_languages=request.POST.getlist("lang")
 #     return render(request, "app1/partials/languages.html",{"selected_languages":selected_languages})
+
+# bulk update
+# def bulk_update(request):    
+#     return render(request, "app1/bulk_update.html",{'selected_languages':selected_languages})
