@@ -29,7 +29,7 @@ def test_post(request, *args,**kwargs):
     print("request",request,"\n args",args,"\n kwargs",kwargs, "\n kwargs.get('a')",kwargs.get("a"),"\n first_name", request.POST.get("first_name"),"\n last_name", request.POST.get("last_name"))
     return HttpResponse(f'Hello {request.POST.get("first_name")} {request.POST.get("last_name")}')
 
-# languages() version 3 - split languages into 2 end points activate, disactivate 
+# languages() version 3 - split languages into 2 end points activate, deactivate 
 LANGUAGES={"python":True,"javascript":True,"c":False}
 def bulk_update(request):    
     return render(request, "app1/bulk_update.html",{'languages':LANGUAGES})
@@ -44,7 +44,7 @@ def activate(request):
     print(LANGUAGES)
     return render(request, "app1/partials/languages.html",{"languages":LANGUAGES})
 
-def disactivate(request):
+def deactivate(request):
     selected_languages=request.POST.getlist("lang")
     for key,value in LANGUAGES.items():
         if key in selected_languages:
