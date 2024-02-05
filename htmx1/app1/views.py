@@ -90,7 +90,17 @@ class ContactView(TemplateView):
                 if c["id"]==id:
                     current_contact=c                      
             return {'contact':current_contact}
-
+        if self.request.method=="PUT":
+            print(kwargs)        
+            id=kwargs["id"]            
+            current_contact={}
+            for c in contacts:
+                if c["id"]==id:
+                    c["first_name"]=kwargs["first_name"]
+                    c["percentage"]=kwargs["percentage"]
+                    current_contact=c
+            return {'contact':current_contact}
+        
 # function based views
 # def contact(request,id):   
 #     if request.method=="GET":
@@ -111,7 +121,20 @@ class ContactView(TemplateView):
 #                 current_contact=c
 #         return render(request, "app1/contact.html",{'contact':current_contact})        
     
+# class based view
+class ContactForm(TemplateView):
+    template_name="app1/contact_form.html"
 
+    def get_context_data(self, **kwargs):
+        if self.request.method=="GET":
+            id=kwargs["id"]
+            current_contact={}
+        for c in contacts:
+            if c["id"]==id:
+                current_contact=c 
+        return {"contact":current_contact}
+    
+# function based view
 # def contact_form(request,id):
 #     current_contact={}
 #     for c in contacts:

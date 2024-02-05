@@ -11,5 +11,6 @@ urlpatterns = [
     # path("app1/partials/languages/",views.languages, name="languages"),
     # path("contact/<int:id>/",views.contact,name="contact"),
     # path("contact/<int:id>/edit/",views.contact_form,name="contact_form"),
-    path("contact/<int:id>/",views.ContactView.as_view(),name="contact")
+    path("contact/<int:id>/",views.ContactView.as_view(),name="contact"),
+    path("contact/<int:id>/edit/",views.ContactForm.as_view(),name="contact_form")
 ]
