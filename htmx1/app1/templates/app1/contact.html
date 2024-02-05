@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Contact details</h2>
+  <div hx-target="this">
+    <p>ID: {{ contact.id }}</p>
+    <p>First Name:{{ contact.first_name }}</p>
+    <p>Percentage:{{ contact.percentage }}</p>
+    <button hx-get="edit/">Edit contact</button>
+  </div>
+{% endblock %}

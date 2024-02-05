@@ -1,0 +1,14 @@
+<form hx-put="">
+  {% csrf_token %}
+  <div>
+    <label>Enter first name</label>
+    <input type="text" name="first_name" value="{{ contact.first_name }}" />
+  </div>
+  <div>
+    <label>Enter Percentage</label>
+    <input type="number" name="percentage" value="{{ contact.percentage }}" />
+  </div>
+  <div>
+    <button>Save contact</button>
+  </div>
+</form>

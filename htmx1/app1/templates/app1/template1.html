@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
   <div hx-target="this" hx-swap="innerHTML swap:3s settle:5s">
-    <h2>Main Template</h2>
+    <h2 id="demo">Main Template</h2>
     <button hx-get="/test/">Load Test Template</button>
   </div>
   <section>
@@ -16,9 +16,10 @@
     </div>
   </section>
   <script>
+    htmx.addClass(htmx.find('#demo'), 'text-yellow');
     htmx.on('htmx:afterSwap', function(event){      
       console.log('swapped succesfully')
     }
-    )
+    )    
   </script>
 {% endblock %}

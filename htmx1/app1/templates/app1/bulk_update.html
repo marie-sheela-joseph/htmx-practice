@@ -1,5 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
+  <form hx-post="/app1/partials/languages/"
+        hx-target="#languages_options"
+        name="lang-form">
+    {% csrf_token %}
+    <div id="languages_options">{% include 'app1/partials/languages.html' %}</div>
+    <button hx-post="/app1/partials/activate/" hx-include="[name='lang-form']">activate</button>
+    <button hx-post="/app1/partials/deactivate/">deactivate</button>
+  </form>
+{% endblock %}
+{% comment %}
+{% extends 'base.html' %}
+{% block content %}
   <form hx-target="#languages_options" name="lang-form">
     {% csrf_token %}
     <div id="languages_options">{% include 'app1/partials/languages.html' %}</div>
@@ -7,6 +19,7 @@
     <button hx-post="/app1/partials/deactivate/">deactivate</button>
   </form>
 {% endblock %}
+{% endcomment %}
 {% comment %}
 {% extends 'base.html' %}
 {% block content %}

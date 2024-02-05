@@ -1,6 +1,8 @@
 
+from typing import Any
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.generic import TemplateView
 
 def index(request):
     return render(request, "app1/template1.html", {"test": 'test1'})
@@ -72,3 +74,47 @@ def deactivate(request):
 # bulk update
 # def bulk_update(request):    
 #     return render(request, "app1/bulk_update.html",{'selected_languages':selected_languages})
+
+contacts=[{"id":1,"first_name":"A","percentage":90
+}]
+
+# class based views
+class ContactView(TemplateView):
+    template_name="app1/contact.html"
+
+    def get_context_data(self,**kwargs):
+        if self.request.method=="GET":            
+            id=kwargs["id"]            
+            current_contact={}
+            for c in contacts:
+                if c["id"]==id:
+                    current_contact=c                      
+            return {'contact':current_contact}
+
+# function based views
+# def contact(request,id):   
+#     if request.method=="GET":
+#         print("get req")
+#         current_contact={}
+#         for c in contacts:
+#             if c["id"]==id:
+#                 current_contact=c     
+#         return render(request, "app1/contact.html",{'contact':current_contact})
+    
+#     if request.method=="PUT" :
+#         print("put req")
+#         current_contact={}
+#         for c in contacts:
+#             if c["id"]==id:
+#                 c["first_name"]=request.PUT.get("first_name")
+#                 c["percentage"]=request.PUT.get("percentage")
+#                 current_contact=c
+#         return render(request, "app1/contact.html",{'contact':current_contact})        
+    
+
+# def contact_form(request,id):
+#     current_contact={}
+#     for c in contacts:
+#         if c["id"]==id:
+#             current_contact=c    
+#     return render(request,"app1/contact_form.html",{"contact":current_contact})
