@@ -101,6 +101,7 @@ class ContactView(TemplateView):
                     current_contact=c
             return {'contact':current_contact}
         
+        
 # function based views
 # def contact(request,id):   
 #     if request.method=="GET":
