@@ -14,7 +14,7 @@
           crossorigin="anonymous" />
     <link rel="stylesheet" href="{% static 'styles.css' %}" />
   </head>
-  <body>
+  <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
     <header>
       <h1>
         {% block header %}header goes here{% endblock %}
